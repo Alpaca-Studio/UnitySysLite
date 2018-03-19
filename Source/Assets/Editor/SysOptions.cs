@@ -119,7 +119,7 @@ public class SysOptions : EditorWindow {
 		GUILayout.Label("Sys API v" + _currentVersion+ " Editor Options", EditorStyles.boldLabel);
 		using (var horizontalScope = new GUILayout.HorizontalScope("box"))
         {
-		GUILayout.BeginHorizontal();
+		////GUILayout.BeginHorizontal();
 		if(GUILayout.Button("Check For Updates", EditorStyles.miniButton)){
 			EditorPrefs.SetString("VC",_currentVersion);
 			EditorApplication.isPlaying = true;
@@ -138,19 +138,18 @@ public class SysOptions : EditorWindow {
 			GameObject newObj = new GameObject("SYS");
 			newObj.AddComponent<Sys_API_CSharp_Example>();
 			newObj.AddComponent<Sys_API_JS_Example>();
-		}
-		GUILayout.EndHorizontal();
-		}
+		}	
+		////GUILayout.EndHorizontal();
+		////}
 		
-		EditorGUILayout.Space();
-		
-		GUILayout.BeginHorizontal();
+		////EditorGUILayout.Space();
+		////GUILayout.BeginHorizontal();
 		if(GUILayout.Button("Add Libraries", EditorStyles.miniButton)){ _addLibraries = !_addLibraries; _showDocumentation =false;}
-		EditorGUILayout.Space(); 
+		////EditorGUILayout.Space(); 
 		if(GUILayout.Button(_docuLabel, EditorStyles.miniButton)){ _showDocumentation = !_showDocumentation; _addLibraries =false;}
-		GUILayout.EndHorizontal();
-		
-		EditorGUILayout.Space();
+		////GUILayout.EndHorizontal();
+		////EditorGUILayout.Space();
+		}
 		
 		if(_addLibraries){
 			using (var horizontalScope = new GUILayout.HorizontalScope("box"))
