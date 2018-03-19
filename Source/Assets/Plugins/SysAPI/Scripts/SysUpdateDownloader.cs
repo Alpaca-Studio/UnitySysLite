@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class SysUpdateDownloader : MonoBehaviour {
 #if UNITY_EDITOR
-	string _versionURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Plugins/SysAPI/vc.dxt"+Sys.M.URLAntiCache();
-	string _sourceURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_MASTER.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
-	string _docuURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Sys_API/Documentation.txt"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
-	string _sysCSURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Sys_API/Examples/Sys_API_CSharp_Example.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
-	string _sysJSURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Sys_API/Examples/Sys_API_JS_Example.js";
-	string _changelogURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Sys_API/change.log"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
-	string _silURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysAPI/master/Source/Assets/Editor/SystemInformationLogger.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
+	string _versionURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/vc.dxt"+Sys.M.URLAntiCache();
+	string _sourceURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_MASTER.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
+	string _docuURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/Documentation.txt"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
+	string _sysCSURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/Examples/Sys_API_CSharp_Example.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
+	string _sysJSURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/Examples/Sys_API_JS_Example.js";
+	string _changelogURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/change.log"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
+	string _silURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Editor/SystemInformationLogger.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
 	string _path;
 	//List<string> VC = new List<string>();
 	string _currentVersion;
@@ -47,11 +47,50 @@ public class SysUpdateDownloader : MonoBehaviour {
 		if(File.ReadAllLines(_path+"vc.dxt")[0] != null){
 			string newVC = File.ReadAllLines(_path+"vc.dxt")[0];
 			if(newVC != _currentVersion || forceUpdate){
-				File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MASTER.cs").Dispose();
-
-				Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-				StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MASTER.cs"));
-				Debug.LogWarning("[Sys API]: Downloading SYS_MASTER.cs");
+			//Get Sys Logging
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MASTER.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MASTER.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MASTER.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_MASTER.cs");
+				}
+			//Get Sys IO
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_IO.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_IO.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_IO.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_IO.cs");
+				}
+			//Get Sys Info
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_INFO.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_INFO.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_INFO.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_INFO.cs");
+				}
+			//Get Sys Math
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MATH.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MATH.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MATH.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_MATH.cs");
+				}
+			//Get Sys StackTrace
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_STACKTRACE.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_STACKTRACE.cs");
+				}
+			//Get Sys ScreenShot
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_SCREENSHOT.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_SCREENSHOT.cs");
+				}
+				
+				
 				
 				File.Create(Application.dataPath + "/Sys_API/Documentation.txt").Dispose();
 				StartCoroutine(DownloadDataFiles(_docuURL,Application.dataPath + "/Sys_API/","Documentation.txt"));
