@@ -184,6 +184,7 @@ public class SysOptions : EditorWindow {
 					GameObject newObj = new GameObject("SysOptions");
 					newObj.AddComponent<SysUpdateDownloader>();
 					newObj.GetComponent<SysUpdateDownloader>().forceUpdate = true;
+					_showUpdateGUI=false;
 				}
 				EditorGUILayout.Space();
 				if(GUILayout.Button("No", EditorStyles.miniButton)){_showUpdateGUI=false;}
