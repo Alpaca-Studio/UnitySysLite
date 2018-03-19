@@ -6,7 +6,16 @@ using UnityEngine;
 public class SysUpdateDownloader : MonoBehaviour {
 #if UNITY_EDITOR
 	string _versionURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/vc.dxt"+Sys.M.URLAntiCache();
-	string _sourceURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_MASTER.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
+	string[] _sourceURL = {
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_LOGGING.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_IO.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_INFO.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_MATH.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+		"https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Plugins/SysAPI/Scripts/SYS_M.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss"),
+	
+	};
 	string _docuURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/Documentation.txt"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
 	string _sysCSURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/Examples/Sys_API_CSharp_Example.cs"+"?t="+System.DateTime.Now.ToString("MMddyyyyhhmmss");
 	string _sysJSURL = "https://raw.githubusercontent.com/Alpaca-Studio/UnitySysLite/master/Source/Assets/Sys_API/Examples/Sys_API_JS_Example.js";
@@ -48,48 +57,54 @@ public class SysUpdateDownloader : MonoBehaviour {
 			string newVC = File.ReadAllLines(_path+"vc.dxt")[0];
 			if(newVC != _currentVersion || forceUpdate){
 			//Get Sys Logging
-				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MASTER.cs")){
-					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MASTER.cs").Dispose();
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_LOGGING.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_LOGGING.cs").Dispose();
 					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MASTER.cs"));
-					Debug.LogWarning("[Sys API]: Downloading SYS_MASTER.cs");
+					StartCoroutine(DownloadDataFiles(_sourceURL[0], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_LOGGING.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_LOGGING.cs");
 				}
 			//Get Sys IO
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_IO.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_IO.cs").Dispose();
 					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_IO.cs"));
+					StartCoroutine(DownloadDataFiles(_sourceURL[1], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_IO.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_IO.cs");
 				}
 			//Get Sys Info
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_INFO.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_INFO.cs").Dispose();
 					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_INFO.cs"));
+					StartCoroutine(DownloadDataFiles(_sourceURL[3], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_INFO.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_INFO.cs");
 				}
 			//Get Sys Math
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MATH.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MATH.cs").Dispose();
 					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MATH.cs"));
+					StartCoroutine(DownloadDataFiles(_sourceURL[4], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MATH.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_MATH.cs");
 				}
 			//Get Sys StackTrace
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs").Dispose();
 					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_STACKTRACE.cs"));
+					StartCoroutine(DownloadDataFiles(_sourceURL[5], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_STACKTRACE.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_STACKTRACE.cs");
 				}
 			//Get Sys ScreenShot
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs").Dispose();
 					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
-					StartCoroutine(DownloadDataFiles(_sourceURL, Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_SCREENSHOT.cs"));
+					StartCoroutine(DownloadDataFiles(_sourceURL[2], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_SCREENSHOT.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_SCREENSHOT.cs");
 				}
-				
+			//Get Sys Misc.
+				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_M.cs")){
+					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_M.cs").Dispose();
+					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					StartCoroutine(DownloadDataFiles(_sourceURL[6], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_M.cs"));
+					Debug.LogWarning("[Sys API]: Downloading SYS_M.cs");
+				}
 				
 				
 				File.Create(Application.dataPath + "/Sys_API/Documentation.txt").Dispose();
@@ -137,7 +152,7 @@ public class SysUpdateDownloader : MonoBehaviour {
 				Debug.LogWarning("[Sys API]: " + fileName + " successfully updated.");
 				dlCount++;
 				//Debug.Log(dlCount);
-				if(dlCount >= 6){
+				if(dlCount >= 12){
 					UnityEditor.EditorPrefs.SetString("VC",_currentVersion);
 					Destroy(this.gameObject);
 					UnityEditor.EditorApplication.isPlaying = false;
