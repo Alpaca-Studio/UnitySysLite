@@ -185,6 +185,7 @@ public class SysOptions : EditorWindow {
 					newObj.AddComponent<SysUpdateDownloader>();
 					newObj.GetComponent<SysUpdateDownloader>().forceUpdate = true;
 					_showUpdateGUI=false;
+					_updateResult=0; EditorPrefs.SetInt("result",_updateResult);
 				}
 				EditorGUILayout.Space();
 				if(GUILayout.Button("No", EditorStyles.miniButton)){_showUpdateGUI=false;}
