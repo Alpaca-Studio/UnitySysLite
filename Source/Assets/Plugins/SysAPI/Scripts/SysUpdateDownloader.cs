@@ -66,42 +66,42 @@ public class SysUpdateDownloader : MonoBehaviour {
 			//Get Sys IO
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_IO.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_IO.cs").Dispose();
-					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					
 					StartCoroutine(DownloadDataFiles(_sourceURL[1], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_IO.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_IO.cs");
 				}
 			//Get Sys Info
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_INFO.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_INFO.cs").Dispose();
-					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					
 					StartCoroutine(DownloadDataFiles(_sourceURL[3], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_INFO.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_INFO.cs");
 				}
 			//Get Sys Math
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MATH.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_MATH.cs").Dispose();
-					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					
 					StartCoroutine(DownloadDataFiles(_sourceURL[4], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_MATH.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_MATH.cs");
 				}
 			//Get Sys StackTrace
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_STACKTRACE.cs").Dispose();
-					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					
 					StartCoroutine(DownloadDataFiles(_sourceURL[5], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_STACKTRACE.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_STACKTRACE.cs");
 				}
 			//Get Sys ScreenShot
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_SCREENSHOT.cs").Dispose();
-					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					
 					StartCoroutine(DownloadDataFiles(_sourceURL[2], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_SCREENSHOT.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_SCREENSHOT.cs");
 				}
 			//Get Sys Misc.
 				if(File.Exists(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_M.cs")){
 					File.Create(Application.dataPath + "/Plugins/SysAPI/Scripts/SYS_M.cs").Dispose();
-					Debug.LogWarning("[Sys API]: Downloading Sys API v" + newVC );
+					
 					StartCoroutine(DownloadDataFiles(_sourceURL[6], Application.dataPath + "/Plugins/SysAPI/Scripts/","SYS_M.cs"));
 					Debug.LogWarning("[Sys API]: Downloading SYS_M.cs");
 				}
